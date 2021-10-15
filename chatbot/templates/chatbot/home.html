@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    Hello Lanre
+    <div id="response"></div>
+    <form method="POST" id="text-form">
+        <input type="text" name="user_input" id="user_input">
+    </form>
+    <script>
+        $(document).ready(function () {
+            $("#text-form").on("submit", function (e) {
+                e.preventDefault()
+                let message = $("#user_input").val()
+                //remember to set {{domain}}
+                $.ajax(`http://127.0.0.1:8000{% url 'apis:get-response' %}?message=${message}`,   // request url
+                    {
+                        success: function (data) {// success callback function
+                            console.log(data)
+                            $("#response").html(data.response)
+                        },
+                        error: function (err) {
+                            alert(err)
+                            console.log(err)
+                        }
+
+
+                    });
+
+            })
+
+        });
+    </script>
+</body>
+
+</html>
