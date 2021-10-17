@@ -1,7 +1,7 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi there", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
-         "responses": ["Hello", "Good to see you again", "Hi there, how can I help?"],
+         "patterns": ["Hi there", "Is anyone there?","Hey","Hola", "Hello", "Good day","yo", "evening"],
+         "responses": ["Hi there, tell me how can i help you?", "Hi there, how can I help?"],
          "context": [""]
         },
         { "tag": "small talk - English",
@@ -11,7 +11,7 @@
         },
         { "tag": "small talk - Pidgin",
           "patterns": ["how far", "how you dey"],
-          "responses": ["i dey okay, talk to me about how you are feeling"],
+          "responses": ["i dey okay, talk to me about how you are feeling please"],
           "context": [""]
         },
         {"tag": "goodbye",
@@ -25,13 +25,23 @@
           "context": [""]
         },
         { "tag": "diagnosis",
-          "patterns": ["i feel sick", "i think i am sick", "I don't feel too good", "i'm not feeling too good", "im feeling ill", "i'm feeling ill", "i feel feverish"],
+          "patterns": ["i feel sick", "i think i am sick", "I don't feel too good", "i'm not feeling too good", "im feeling ill", "i'm feeling ill", "i feel feverish", "i have a problem", "i have an issue"],
           "responses": ["Sorry about that, How Exactly are you feeling"],
           "context":  [""]
         },
         { "tag": "headache",
-          "patterns": ["i have a headache", "i have stomach pain", "i'm running a temprature", "i have nausea", "tired and hot"],
+          "patterns": ["i have a headache"],
+          "responses": ["Are you having pain in your eyes?"],
+          "context": [""]
+        },
+        { "tag": "complaints",
+          "patterns": ["i have stomach pain", "i'm running a temprature", "i have nausea", "tired and hot"],
           "responses": ["How long has this been going on for?", "When did this start", "Are you on any medication"],
+          "context": [""]
+        },
+        { "tag": "migraines",
+          "patterns": ["yes", "yes i do", "yeah"],
+          "responses": ["I think you are most likely having a migraine attack Taking “ibuprofen” 2 tablets would reduce pain in you eyes. Also take “aspirin” 20ml to help you tackle vomiting. Do take a nap and don't forget to wash your eyes with luke warm water. Avoid using digital screen until you feel better."],
           "context": [""]
         },
         { "tag": "days",

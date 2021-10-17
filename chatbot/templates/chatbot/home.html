@@ -1,38 +1,202 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr Foluke</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+
+    
+
+        
+        
+        
+        /* .chatsbox{
+            flex: 1;
+        } */
+        
+        .input{
+            
+            
+            
+            background-color: white;
+            border-radius: 1000px;
+            border:0px;
+            padding: 10px 20px;
+        }
+        .send{
+            background-color: blue;
+            border: none;
+            color: white;
+            align-self: stretch;
+            padding: 10px;
+            border-radius: 500px;
+        }
+        .aichatbox{
+            width: fit-content;
+            margin-bottom: 30px;
+        }
+        .aichat{
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 1000px;
+            min-width: 300px;
+            margin-bottom: 10px;
+        }
+        .aichat__info{
+            display: flex;
+            align-items: center;
+        }
+        .aichat__image{
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 1000px;
+            margin-right: 10px;
+        }
+        .aichat__name{
+            color: rgb(132, 136, 151);
+        }
+        .chatbox{
+            width: fit-content;
+            margin-left: auto;
+            margin-bottom: 10px;
+        }
+        .chat{
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 1000px;
+            min-width: 300px;
+            margin-bottom: 10px;
+        }
+        .chat__info{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .chat__image{
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 1000px;
+            margin-left: 10px;
+        }
+        .chat__name{
+            color: rgb(132, 136, 151);
+        }
+    </style>
+    
 </head>
 
-<body>
-    Hello Lanre
-    <div id="response"></div>
-    <form method="POST" id="text-form">
-        <input type="text" name="user_input" id="user_input">
-    </form>
+<body style="background-color: rgb(241, 242, 246);padding: 20px;">
+<section>
+    <div class="container">
+        <div id="scrollable" class="chatsbox" style="overflow: auto;height: 90vh;">
+
+            <div class="aichatbox">
+                <div class="aichatmessages">
+                    <div class="aichat">Hi my name is Dr Foluke</div>
+                </div>
+                <div class="aichat__info">
+                    <img src="{% static 'sakura.jpg' %}" class="aichat__image" />
+                    <span class="aichat__name">Dr Foluke</span>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="container">
+        <form style="position: relative;bottom: 0;" class="form row justify-content-center">
+            <div>
+                <input type="text" class="input"/>
+                 <button type="submit" class="send">send</button>
+            </div>
+            
+        </form>
+        </div>
+    
+
+
+    </div>
+</section>
+    
+        
+
+
+
+
+
     <script>
         $(document).ready(function () {
-            $("#text-form").on("submit", function (e) {
-                e.preventDefault()
-                let message = $("#user_input").val()
-                //remember to set {{domain}}
-                $.ajax(`http://127.0.0.1:8000{% url 'apis:get-response' %}?message=${message}`,   // request url
-                    {
-                        success: function (data) {// success callback function
-                            console.log(data)
-                            $("#response").html(data.response)
-                        },
-                        error: function (err) {
-                            alert(err)
-                            console.log(err)
-                        }
 
 
-                    });
+            const formEl= document.querySelector(".form");
+            const chatmessages =  document.querySelector(".chatsbox");
 
+            formEl.addEventListener("submit",(e)=>{
+                e.preventDefault();
+                const inputEl = document.querySelector(".input")
+                const inputvalue = inputEl.value
+                // add to the chats
+                chatmessages.insertAdjacentHTML("beforeend",`
+                <div class="chatbox">
+                    <div class="chatmessages">
+                        <div class="chat">${inputvalue}</div>
+                    </div>
+                    <div class="chat__info">
+                        <span class="chat__name">Ayobami</span>
+                        <img src="{% static 'deku.jpg' %}" class="chat__image" />
+                    </div>
+                </div>
+                `)
+                var objDiv = document.getElementById("scrollable");
+                objDiv.scrollTop = objDiv.scrollHeight;
+                
+
+                message=inputvalue
+
+                
+                $.ajax(`http://{{domain}}{% url 'apis:get-response' %}?message=${message}`,   // request url
+                        {
+                            success: function (data) {// success callback function
+                                console.log(data)
+                                // add to the chats
+                                const aichatmessages =  document.querySelector(".chatsbox");
+                                aichatmessages.insertAdjacentHTML("beforeend",`
+                                <div class="aichatbox">
+                                    <div class="aichatmessages">
+                                        <div class="aichat">${data.response}</div>
+                                    </div>
+                                    <div class="aichat__info">
+                                        <img src="{% static 'sakura.jpg' %}" class="aichat__image" />
+                                        <span class="aichat__name">Dr Foluke</span>
+                                    </div>
+                                </div>
+                                `)
+                                var objDiv = document.getElementById("scrollable");
+                                objDiv.scrollTop = objDiv.scrollHeight;
+                
+                            },
+                            error: function (err) {
+                                console.log(err)
+                            }
+
+
+                        });
+            
+                        inputEl.value = ""
+                    
             })
+
+
 
         });
     </script>
