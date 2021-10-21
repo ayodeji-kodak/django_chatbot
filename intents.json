@@ -34,8 +34,28 @@
           "responses": ["Are you having pain in your eyes?"],
           "context": [""]
         },
+        { "tag": "stomach ache",
+          "patterns": ["i have stomach ache", "i have stomach pain"],
+          "responses": ["Describe the pain to me please "],
+          "context": [""]
+        },
+         { "tag": "describing pain",
+          "patterns": ["what do you mean", "i dont understand", "what?", "sorry?", "pardon?"],
+          "responses": ["pain could be sharp, mild or stabbing"],
+          "context": [""]
+        },
+        { "tag": "type of stomach pain",
+          "patterns": ["sharp", "mild", "stabbing"],
+          "responses": ["what side of your belly are you feeling the pain"],
+          "context": [""]
+        },
+        { "tag": "location of stomach pain",
+          "patterns": ["left side, right side, all round, left, right, everywhere"],
+          "responses": ["here is a list of things that could help"],
+          "context": [""]
+        },
         { "tag": "complaints",
-          "patterns": ["i have stomach pain", "i'm running a temprature", "i have nausea", "tired and hot"],
+          "patterns": ["i'm running a temprature", "i have nausea", "tired and hot"],
           "responses": ["How long has this been going on for?", "When did this start", "Are you on any medication"],
           "context": [""]
         },
