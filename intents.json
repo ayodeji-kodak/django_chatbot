@@ -1,7 +1,7 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi there", "Is anyone there?","Hey","Hola", "Hello", "Good day"],
-         "responses": ["Hello", "Good to see you again", "Hi there, how can I help?"],
+         "patterns": ["Hi there", "Is anyone there?","Hey","Hola", "Hello", "Good day","yo", "evening"],
+         "responses": ["Hi there, tell me how can i help you?", "Hi there, how can I help?"],
          "context": [""]
         },
         { "tag": "small talk - English",
@@ -11,7 +11,7 @@
         },
         { "tag": "small talk - Pidgin",
           "patterns": ["how far", "how you dey"],
-          "responses": ["i dey okay, talk to me about how you are feeling"],
+          "responses": ["i dey okay, talk to me about how you are feeling please"],
           "context": [""]
         },
         {"tag": "goodbye",
@@ -25,13 +25,58 @@
           "context": [""]
         },
         { "tag": "diagnosis",
-          "patterns": ["i feel sick", "i think i am sick", "I don't feel too good", "i'm not feeling too good", "im feeling ill", "i'm feeling ill", "i feel feverish"],
+          "patterns": ["i feel sick", "i think i am sick", "I don't feel too good", "i'm not feeling too good", "im feeling ill", "i'm feeling ill", "i feel feverish", "i have a problem", "i have an issue"],
           "responses": ["Sorry about that, How Exactly are you feeling"],
           "context":  [""]
         },
         { "tag": "headache",
-          "patterns": ["i have a headache", "i have stomach pain", "i'm running a temprature", "i have nausea", "tired and hot"],
+          "patterns": ["i have a headache"],
+          "responses": ["Are you having pain in your eyes?"],
+          "context": [""]
+        },
+        { "tag": "migraines follow up",
+          "patterns": ["yes", "yes i do", "yeah"],
+          "responses": ["I think you are most likely having a migraine attack Taking “ibuprofen” 2 tablets would reduce pain in you eyes. Also take “aspirin” 20ml to help you tackle vomiting. Do take a nap and don't forget to wash your eyes with luke warm water. Avoid using digital screen until you feel better."],
+          "context": [""]
+        },
+        { "tag": "stomach ache",
+          "patterns": ["i have stomach ache", "i have stomach pain"],
+          "responses": ["Describe the pain to me please "],
+          "context": [""]
+        },
+         { "tag": "describing pain",
+          "patterns": ["what do you mean", "i dont understand", "what?", "sorry?", "pardon?"],
+          "responses": ["pain could be sharp, mild or stabbing"],
+          "context": [""]
+        },
+        { "tag": "type of stomach pain",
+          "patterns": ["sharp", "mild", "stabbing"],
+          "responses": ["what side of your belly are you feeling the pain"],
+          "context": [""]
+        },
+        { "tag": "location of stomach pain",
+          "patterns": ["left side, right side, all round, left, right, everywhere"],
+          "responses": ["here is a list of things that could help"],
+          "context": [""]
+        },
+        { "tag": "complaints",
+          "patterns": ["i'm running a temprature", "i have nausea", "tired and hot"],
           "responses": ["How long has this been going on for?", "When did this start", "Are you on any medication"],
+          "context": [""]
+        },
+        { "tag": "running temprature",
+          "patterns": ["i'm running a temprature", "my temprature is high"],
+          "responses": ["sorry about that, stay in bed and rest. Keep hydrated. Drinking water, iced tea, or very diluted juice to replenish fulids lost through sweating"],
+          "context": [""]
+        },
+        { "tag": "nausea",
+          "patterns": ["i have nausea", "i feel like throwing up", "i want to vomit", "i feel like vomiting"],
+          "responses": ["sorry about that, eat bland foods and avoid strong odurs. Taking motion sickness medication may also help ease symptoms"],
+          "context": [""]
+        },
+        { "tag": "migraines",
+          "patterns": ["i have a migraine"],
+          "responses": ["Taking “ibuprofen” 2 tablets would reduce pain in you eyes. Also take “aspirin” 20ml to help you tackle vomiting. Do take a nap and don't forget to wash your eyes with luke warm water. Avoid using digital screen until you feel better."],
           "context": [""]
         },
         { "tag": "days",
@@ -67,46 +112,6 @@
         {"tag": "adverse_drug",
          "patterns": ["How to check Adverse drug reaction?", "Open adverse drugs module", "Give me a list of drugs causing adverse behavior", "List all drugs suitable for patient with adverse reaction", "Which drugs dont have adverse reaction?" ],
          "responses": ["Navigating to Adverse drug reaction module"],
-         "context": [""]
-        },
-        {"tag": "blood_pressure",
-         "patterns": ["Open blood pressure module", "Task related to blood pressure", "Blood pressure data entry", "I want to log blood pressure results", "Blood pressure data management" ],
-         "responses": ["Navigating to Blood Pressure module"],
-         "context": [""]
-        },
-        {"tag": "blood_pressure_search",
-         "patterns": ["I want to search for blood pressure result history", "Blood pressure for patient", "Load patient blood pressure result", "Show blood pressure results for patient", "Find blood pressure results by ID" ],
-         "responses": ["Please provide Patient ID", "Patient ID?"],
-         "context": ["search_blood_pressure_by_patient_id"]
-        },
-        {"tag": "search_blood_pressure_by_patient_id",
-         "patterns": [],
-         "responses": ["Loading Blood pressure result for Patient"],
-         "context": [""]
-        },
-        {"tag": "pharmacy_search",
-         "patterns": ["Find me a pharmacy", "Find pharmacy", "List of pharmacies nearby", "Locate pharmacy", "Search pharmacy" ],
-         "responses": ["Please provide pharmacy name"],
-         "context": ["search_pharmacy_by_name"]
-        },
-        {"tag": "search_pharmacy_by_name",
-         "patterns": [],
-         "responses": ["Loading pharmacy details"],
-         "context": [""]
-        },
-        {"tag": "hospital_search",
-         "patterns": ["Lookup for hospital", "Searching for hospital to transfer patient", "I want to search hospital data", "Hospital lookup for patient", "Looking up hospital details" ],
-         "responses": ["Please provide hospital name or location"],
-         "context": ["search_hospital_by_params"]
-        },
-        {"tag": "search_hospital_by_params",
-         "patterns": [],
-         "responses": ["Please provide hospital type"],
-         "context": ["search_hospital_by_type"]
-        },
-        {"tag": "search_hospital_by_type",
-         "patterns": [],
-         "responses": ["Loading hospital details"],
          "context": [""]
         }
    ]

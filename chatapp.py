@@ -13,6 +13,7 @@ words = pickle.load(open('words.pkl','rb'))
 classes = pickle.load(open('classes.pkl','rb'))
 
 def clean_up_sentence(sentence):
+    print(sentence)
     # tokenize the pattern - split words into array
     sentence_words = nltk.word_tokenize(sentence)
     # stem each word - create short form for word
@@ -27,6 +28,7 @@ def getResponse(ints, intents_json):
         if(i['tag']== tag):
             result = random.choice(i['responses'])
             break
+    print (result)
     return result
 
 def chatbot_response(text):
